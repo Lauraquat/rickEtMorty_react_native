@@ -1,12 +1,15 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import React from 'react'
 
 export default function item(props) {
   return (
-    <View style={styles.container}>
-      <Image source={{uri: props.character.image}} style={styles.image}/>
-      <Text style={styles.name}>{props.character.name}</Text>
-    </View>
+    <Pressable style={styles.container} onPress={() => props.onPress()}>
+      <Image source={{ uri: props.character.image }} style={styles.image} />
+      <View style={styles.container}>
+        <Text style={styles.name}>{props.character.name}</Text>
+        <Text style={styles.description}>{props.character.species}</Text>
+      </View>
+    </Pressable>
   )
 }
 
@@ -24,6 +27,11 @@ const styles = StyleSheet.create({
     fontSize: 21,
     fontWeight: '600',
     color: 'blue',
+    marginLeft: 20,
+  },
+  description: {
+    fontSize: 13,
+    fontWeight: '400',
     marginLeft: 20,
   }
 })
