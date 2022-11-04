@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, FlatList } from 'react-native';
+import Item from '../components/item';
 
 
 const ListItemScreen = () => {
@@ -18,7 +19,7 @@ const ListItemScreen = () => {
         <View style={styles.container}>
             <FlatList
                 data={items}
-                renderItem={({item}) => <Text>{item.name}</Text>}
+                renderItem={({item}) => <Item character={item}/>}
                 keyExtractor={item => item.id}
             />
         </View>
