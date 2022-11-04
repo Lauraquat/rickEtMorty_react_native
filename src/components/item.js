@@ -2,8 +2,20 @@ import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import React from 'react'
 
 export default function item(props) {
+
+  const isAlive = () => {
+    if(props.character.status === "Alive"){
+      return true;
+    }else{
+      return false;
+    }
+  };
+
+
   return (
-    <Pressable style={styles.container} onPress={() => props.onPress()}>
+    <Pressable 
+      style={[styles.container, isAlive() ? styles.isAlive : styles.isDead]} 
+      onPress={() => props.onPress()}>
       <Image source={{ uri: props.character.image }} style={styles.image} />
       <View style={styles.container}>
         <Text style={styles.name}>{props.character.name}</Text>
@@ -33,5 +45,13 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '400',
     marginLeft: 20,
-  }
+  },
+  isAlive: {
+    borderWidth: 5,
+    borderColor: 'green',
+  },
+  isDead: {
+    borderWidth: 5,
+    borderColor: 'red',
+  },
 })
