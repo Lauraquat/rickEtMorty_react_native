@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import Item from '../components/item';
-import {useNavigation}  from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 
 export const ListItemScreen = () => {
@@ -23,7 +23,9 @@ export const ListItemScreen = () => {
             <FlatList
                 data={items}
                 renderItem={({ item }) => (
-                    <Item character={item} onPress={() => navigation.navigate('Detail')} />
+                    <Item 
+                        character={item}
+                        onPress={() => navigation.navigate('Detail', {character: item})} />
                 )}
                 keyExtractor={item => item.id}
             />
